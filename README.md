@@ -1,21 +1,39 @@
 
-> Open this page at GitHub Pages: [https://jp-rad.github.io/pxt-ubit-extension/](https://jp-rad.github.io/pxt-ubit-extension/)
+> Open this page at GitHub Pages: [https://jp-rad.github.io/amq-pxt-accelmagiq-radio/](https://jp-rad.github.io/amq-pxt-accelmagiq-radio/)
 
-## Creating Extensions
+## Quaternions with AccelMagiQ and micro:bit!
 
-Extensions are PXT’s dynamic/static library mechanism for extending a target, such as the pxt-micro:bit:
+A Simplified Analytic Attitude Determination Algorithm
+using Accelerometer and Magnetometer on micro:bit.
 
-* [MakeCode extensions](https://makecode.com/extensions)
+It's like magic! This algorithm turns raw data into accurate and efficient quaternion estimations,
+transforming your projects and making you go, "Wow!" Using the handy micro:bit, it feels like trying
+out quaternions is pure magic. AccelMagiQ brings a touch of enchantment to the technical world.
+We hope this helps you in your learning journey and sparks your curiosity about the fascinating
+world of quaternions.
 
-### Use this template
+"AccelMagiQ" refers to this amazing algorithm that combines accelerometer and magnetometer data to
+create precise quaternion calculations. It's a playful blend of 'acceleration', 'magnetometer', and 'magic' with
+quaternions ('Q'), making advanced concepts seem like magic!
 
-* open the repository on github.  
-[https://github.com/jp-rad/pxt-ubit-extension](https://github.com/jp-rad/pxt-ubit-extension)
-* click **Use this template**.  
-[Here - https://github.com/jp-rad/pxt-ubit-extension/generate](https://github.com/jp-rad/pxt-ubit-extension/generate)
-* settings for your new repository.  
-Settings > Actions > General > Workflow permissions: **Read and write permissions**  
-Settings > Pages > branch: **master**
+
+- [https://github.com/jp-rad/amq-pxt-accelmagiq-estimator/](https://github.com/jp-rad/amq-pxt-accelmagiq-estimator/)
+- [https://github.com/jp-rad/amq-pxt-accelmagiq-math/](https://github.com/jp-rad/amq-pxt-accelmagiq-math/)
+
+**Radio**
+
+- [https://github.com/jp-rad/amq-pxt-accelmagiq-radio/](https://github.com/jp-rad/amq-pxt-accelmagiq-radio/)
+
+
+# Blocks preview
+
+<!--
+This image shows the blocks code from the last commit in master.
+This image may take a few minutes to refresh.
+
+![A rendered view of the blocks](https://github.com/jp-rad/amq-pxt-accelmagiq-radio/raw/master/.github/makecode/blocks.png)
+-->
+![A rendered view of the blocks](https://github.com/jp-rad/amq-pxt-accelmagiq-radio/raw/master/.github/statics/blocks.png)
 
 ## Use as Extension
 
@@ -24,74 +42,89 @@ This repository can be added as an **extension** in MakeCode.
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
-* search for **https://github.com/jp-rad/pxt-ubit-extension** and import
+* search for **https://github.com/jp-rad/amq-pxt-accelmagiq-radio** and import
 
-## Edit this project ![Build status badge](https://github.com/jp-rad/pxt-ubit-extension/workflows/MakeCode/badge.svg)
-
-To edit this repository in MakeCode.
-
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/jp-rad/pxt-ubit-extension** and click import
-
-## Blocks preview
-
-<!--
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com/jp-rad/pxt-ubit-extension/raw/master/.github/makecode/blocks.png)
--->
-![A rendered view of the blocks](https://github.com/jp-rad/pxt-ubit-extension/raw/master/.github/statics/blocks.png)
-
-
-### Blocks embed
-
-[https://makecode.microbit.org/blocks-embed](https://makecode.microbit.org/blocks-embed)
-
-Copy the following text at the bottom of your README.md file.
-
-```
-
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/jp-rad/pxt-ubit-extension/.github/statics/gh-pages-img.css">
-<script src="https://cdn.jsdelivr.net/gh/jp-rad/pxt-ubit-extension/.github/statics/gh-pages-embed.js"></script>
-<script>makeCodeRender("{{ site.makecode.home_url }}", [ "custom=github:jp-rad/pxt-ubit-extension", ]);</script>
-
-```
-
-### `blocks`
-
-**Example1**
-
-```blocks
-custom.foo(4, "Hello", MyEnum.One)
-
-```
-
-
-**Example2**
-
-```blocks
-input.onButtonPressed(Button.A, function () {
-    basic.showNumber(custom.baz())
-})
-input.onButtonPressed(Button.B, function () {
-    basic.showNumber(custom.bar())
-})
-
+```text
+https://github.com/jp-rad/amq-pxt-accelmagiq-radio
 ```
 
 ## Downloaded HEX file to Use as Extension
 
 Released HEX file can be imported as an **extension** in MakeCode.
 
-* open [https://github.com/jp-rad/pxt-ubit-extension/releases](https://github.com/jp-rad/pxt-ubit-extension/releases)
+* open [https://github.com/jp-rad/amq-pxt-accelmagiq-radio/releases](https://github.com/jp-rad/amq-pxt-accelmagiq-radio/releases)
 * download HEX file
 * open [https://makecode.microbit.org/](https://makecode.microbit.org/)
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
 * click on **Import File**
 * select downloaded HEX file and click on **Go ahead!**
+
+## Example
+
+**JavaScript**
+
+```js
+
+accelmagiq.onRadioReceivedData(function (q) {
+    angle = accelmagiq.rpyFromQuat(accelmagiq.quatFrom(q))
+    serial.writeNumbers([
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Roll)),
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Pitch)),
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Yaw)),
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Azimuth))
+    ])
+})
+let estimated: number[] = []
+let angle: accelmagiq.EulerAngles = null
+if (input.buttonIsPressed(Button.B)) {
+    input.calibrateCompass()
+}
+accelmagiq.setCoordinateSystem(accelmagiq.CoordinateSystem.BASIC)
+accelmagiq.setLowPassFilterAlpha(0.2)
+basic.forever(function () {
+    estimated = accelmagiq.estimate()
+    accelmagiq.sendData(estimated)
+})
+
+```
+
+**Blocks**
+
+```blocks
+
+if (input.buttonIsPressed(Button.B)) {
+    input.calibrateCompass()
+}
+accelmagiq.setCoordinateSystem(accelmagiq.CoordinateSystem.BASIC)
+accelmagiq.setLowPassFilterAlpha(0.2)
+
+```
+
+```blocks
+
+let estimated: number[] = []
+basic.forever(function () {
+    estimated = accelmagiq.estimate()
+    accelmagiq.sendData(estimated)
+})
+
+```
+
+```blocks
+
+let angle: accelmagiq.EulerAngles = null
+accelmagiq.onRadioReceivedData(function (q) {
+    angle = accelmagiq.rpyFromQuat(accelmagiq.quatFrom(q))
+    serial.writeNumbers([
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Roll)),
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Pitch)),
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Yaw)),
+        accelmagiq.intDeg(accelmagiq.angle(angle, accelmagiq.AngleRPY.Azimuth))
+    ])
+})
+
+```
 
 
 #### Metadata (used for search, rendering)
@@ -100,4 +133,4 @@ Released HEX file can be imported as an **extension** in MakeCode.
 
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/jp-rad/pxt-ubit-extension/.github/statics/gh-pages-img.css">
 <script src="https://cdn.jsdelivr.net/gh/jp-rad/pxt-ubit-extension/.github/statics/gh-pages-embed.js"></script>
-<script>makeCodeRender("{{ site.makecode.home_url }}", [ "custom=github:jp-rad/pxt-ubit-extension", ]);</script>
+<script>makeCodeRender("{{ site.makecode.home_url }}", [ "estimator=github:jp-rad/amq-pxt-accelmagiq-estimator", "service=github:jp-rad/amq-pxt-accelmagiq-radio", "math=github:jp-rad/amq-pxt-accelmagiq-math", ]);</script>

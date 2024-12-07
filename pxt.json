@@ -1,15 +1,13 @@
 {
-    "name": "pxt-ubit-extension",
-    "version": "0.1.0-alpha",
-    "description": "(description: this description is written in pxt.json)",
+    "name": "pxt-accelmagiq-radio",
+    "version": "0.0.1",
+    "description": "A Simplified Analytic Attitude Determination Algorithm Using Accelerometer and Magnetometer on micro:bit.",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "radio": "*"
     },
     "files": [
-        "src/customlib.h",
-        "src/customlib.cpp",
-        "src/custom.ts",
-        "src/custom.cpp",
+        "src/accelmagiq.radio.ts",
         "enums.d.ts",
         "shims.d.ts",
         "README.md"

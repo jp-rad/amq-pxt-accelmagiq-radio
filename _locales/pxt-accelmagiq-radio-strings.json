@@ -1,0 +1,9 @@
+{
+  "accelmagiq.bufferAsQuatArray|block": "buffer %receivedBuffer to array",
+  "accelmagiq.onRadioReceivedBuffer|block": "on radio received",
+  "accelmagiq.onRadioReceivedData|block": "on radio received",
+  "accelmagiq.sendData|block": "send data %q",
+  "accelmagiq|block": "AccelMagiQ",
+  "{id:category}Accelmagiq": "Accelmagiq",
+  "{id:group}Radio": "Radio"
+}
