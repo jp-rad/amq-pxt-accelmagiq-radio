@@ -1,0 +1,8 @@
+p img {
+    max-width: 640px;
+}
+
+pre img {
+    max-width: initial;
+    zoom: 0.75;
+}
