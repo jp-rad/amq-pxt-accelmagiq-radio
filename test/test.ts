@@ -1,20 +1,31 @@
 /**
  * tests go here; this will not be compiled when this package is used as an extension.
  */
-// bar
+let quat: number[] = []
 input.onButtonPressed(Button.A, function () {
-    a = custom.bar()
+    quat = [
+        0,
+        -1,
+        2,
+        -3
+    ]
+    accelmagiq.sendData(quat)
 })
-// baz
+input.onButtonPressed(Button.AB, function () {
+    radio.sendBuffer(Buffer.create(4))
+})
 input.onButtonPressed(Button.B, function () {
-    a = custom.baz()
+    quat = [
+        -0.12345,
+        1.123345,
+        -2.12345,
+        3.12345
+    ]
+    accelmagiq.sendData(quat)
 })
-let a = 0
-a = -1
-basic.showString("B")
-basic.forever(function () {
-    if (0 <= a) {
-        basic.showNumber(a)
-    }
-    basic.pause(100)
+accelmagiq.onRadioReceivedData(function (q) {
+    serial.writeNumbers(q)
+})
+accelmagiq.onRadioReceivedBuffer(function (receivedBuffer) {
+    serial.writeLine("not data")
 })
