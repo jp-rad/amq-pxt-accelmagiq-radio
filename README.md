@@ -20,6 +20,14 @@ quaternions ('Q'), making advanced concepts seem like magic!
 - [https://github.com/jp-rad/amq-pxt-accelmagiq-estimator/](https://github.com/jp-rad/amq-pxt-accelmagiq-estimator/)
 - [https://github.com/jp-rad/amq-pxt-accelmagiq-math/](https://github.com/jp-rad/amq-pxt-accelmagiq-math/)
 
+**Bluetooth**
+
+- [https://github.com/jp-rad/amq-pxt-accelmagiq-service/](https://github.com/jp-rad/amq-pxt-accelmagiq-service/)
+- [https://github.com/jp-rad/amq-weblueth-accelmagiq/](https://github.com/jp-rad/amq-weblueth-accelmagiq/)
+
+> [DEMO (github pages) - https://jp-rad.github.io/amq-weblueth-accelmagiq/](https://jp-rad.github.io/amq-weblueth-accelmagiq/)
+
+
 **Radio**
 
 - [https://github.com/jp-rad/amq-pxt-accelmagiq-radio/](https://github.com/jp-rad/amq-pxt-accelmagiq-radio/)
